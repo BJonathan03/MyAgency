@@ -3,8 +3,34 @@
 {% block title 'Nos bien à vendre'%}
 
 {% block body %}
+<div class="jumbotron">
+    <div class="container">
+        {{form_start(form)}}
+        <div class="form-row align-item-end">
+            <div class="col">
+                {{ form_row(form.minSurface)}}
+            </div>
+            <div class="col">
+                {{ form_row(form.maxPrice)}}
+            </div>    
+            <div class="col">
+                <button class="btn btn-primary">Rechercher</button>
+            </div>
+        </div>
+        {{form_end(form)}}
+    </div>
+</div>
     <div class="container mt-4">
         <h1>Nos Biens à vendre</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt minima nemo quasi ducimus ratione harum beatae nulla perspiciatis sunt, minus possimus. Illo exercitationem asperiores consequuntur nobis delectus facilis nihil ipsum.</p>
+        <div class="row">
+            {% for property in properties %}
+            <div class="col-md-4">
+                {% include "property/_property.html.twig" %}            
+            </div>
+            {% endfor %}
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(properties) }}
+        </div>
     </div>
 {% endblock %}
