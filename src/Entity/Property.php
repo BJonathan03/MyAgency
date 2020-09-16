@@ -102,7 +102,7 @@ class Property
     private $created_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Option::class, mappedBy="properties")
+     * @ORM\ManyToMany(targetEntity=Option::class, inversedBy="properties")
      */
     private $options;
 
